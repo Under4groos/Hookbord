@@ -1,8 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.ReactiveUI;
 using System;
-using System.Diagnostics;
-using System.IO;
 
 namespace Hookbord.Desktop;
 

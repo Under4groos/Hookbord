@@ -10,16 +10,11 @@ namespace Hookbord.Model
         public int Error;
         public override string ToString()
         {
-            return $"{key}:{key_replace} - {Error}";
+            return $"{key}:{key_replace} - Error: {Error}";
         }
     }
     public static partial class Imports
     {
-
-        [LibraryImport("lib_win10-11_hook.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16, EntryPoint = "SetHWNDMainWindow")]
-        internal static partial int SetHWNDMainWindow(int _HWND);
-
-
         [LibraryImport("lib_win10-11_hook.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16, EntryPoint = "AddNewKey")]
         internal static partial void AddNewKey(int key, int keybind);
 
@@ -30,7 +25,8 @@ namespace Hookbord.Model
         internal static partial KeyHook GetKey(int key_id);
 
 
-
+        [LibraryImport("lib_win10-11_hook.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16, EntryPoint = "RemoveKey")]
+        internal static partial int RemoveKey(int key);
     }
 }
 
