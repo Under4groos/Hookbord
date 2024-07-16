@@ -1,0 +1,17 @@
+[
+  {
+    "outputFileName": "Hookbord.Desktop/bin/Debug/net8.0/lib_win10-11_hook.dll",
+    "inputFiles": [
+      "x64/Release/lib_win10-11_hook.dll"
+    ]
+  },
+  {
+    "outputFileName": "Hookbord.Desktop/bin/Release/net8.0/lib_win10-11_hook.dll",
+    "inputFiles": [
+      "x64/Release/lib_win10-11_hook.dll"
+    ]
+  }
+
+
+
+]
