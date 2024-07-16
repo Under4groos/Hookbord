@@ -7,9 +7,13 @@
 std::vector<KeyHook> Keys{};
 HHOOK _keyboardhook_thread{ NULL };
 KBDLLHOOKSTRUCT* _kbd_Struct;
+__key_down key_down_event;
 
 
-
+DLL void __cell_function(__key_down kd) {
+	key_down_event = kd;
+	std::cout << (int)key_down_event << std::endl;
+}
 
 extern "C" __declspec(dllexport) void AddNewKey(int key, int keybind) {
 
@@ -39,11 +43,23 @@ LRESULT CALLBACK _keyboard_hook(const int code, const WPARAM wParam, const LPARA
 	{
 		_kbd_Struct = (KBDLLHOOKSTRUCT*)lParam;
 		VirtKeyPrintString(_kbd_Struct);
+
+		if (key_down_event) {
+			KeyHook kh{};
+			kh.key = _kbd_Struct->vkCode;
+			kh.Key_char = VirtKeyToAscii_str(_kbd_Struct);
+			key_down_event(kh);
+			 
+		}
 		for (KeyHook n : Keys) {
 			if (n.Error == -1)
 				continue;
 			if (_kbd_Struct->vkCode == n.key) {
+				n.Key_char = VirtKeyToAscii_str(_kbd_Struct);
 				SendInputDWORD(n.key_replace);
+
+
+				
 				return 1;
 			}
 

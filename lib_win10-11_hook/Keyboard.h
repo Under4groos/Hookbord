@@ -36,6 +36,9 @@ char VirtKeyToAscii(DWORD wVirtKey, DWORD wScanCode) {
 	ToAscii(wVirtKey, wScanCode, lpKeyState, (LPWORD)&result, 0);
 	return result;
 }
+char VirtKeyToAscii_str(KBDLLHOOKSTRUCT* kb) {
+	return VirtKeyToAscii(kb->vkCode, kb->scanCode);
+}
 void VirtKeyPrintString(KBDLLHOOKSTRUCT* kb) {
 	std::cout << VirtKeyToAscii(kb->vkCode, kb->scanCode) << ": " << kb->vkCode << "," << kb->scanCode << std::endl;
 }
