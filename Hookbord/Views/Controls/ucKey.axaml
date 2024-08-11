@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Hookbord.ucKey"
+			 MinHeight="30" Padding="5"
+			 >
+	<Border Background="#1e1e1e" BorderThickness="1" BorderBrush="#404040" CornerRadius="4" >
+		<StackPanel Orientation="Horizontal" >
+			<Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MinWidth="40" Name="_key_repl">-</Label>
+			<Button Name="_button_repl">Bind</Button>
+
+			<Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MinWidth="40" Name="_keyname">-</Label>
+			<Button Name="_button">Bin</Button>
+
+
+			 
+		</StackPanel>
+	</Border>
+
+</UserControl>

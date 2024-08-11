@@ -23,6 +23,12 @@ extern "C" __declspec(dllexport) int CountKeys() {
 
 	return Keys.size();
 }
+extern "C" __declspec(dllexport) void ClearKeys() {
+
+	Keys.clear();
+}
+
+
 extern "C" __declspec(dllexport) int RemoveKey(int key) {
 
 	if (Keys.size() > 0 && key < Keys.size()) {

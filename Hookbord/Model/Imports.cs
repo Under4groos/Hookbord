@@ -14,10 +14,9 @@ namespace Hookbord.Model
         public int Key_char;
         public override string ToString()
         {
-            return $"{key}:{key_replace} - Error: {Error}";
+            return $"{((char)(Key_char))} => {key}:{key_replace} - Error: {Error}";
         }
     }
-
     public static partial class Imports
     {
         [LibraryImport("lib_win10-11_hook.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16, EntryPoint = "AddNewKey")]
@@ -32,6 +31,10 @@ namespace Hookbord.Model
 
         [LibraryImport("lib_win10-11_hook.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16, EntryPoint = "RemoveKey")]
         internal static partial int RemoveKey(int key);
+
+
+        [LibraryImport("lib_win10-11_hook.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16, EntryPoint = "ClearKeys")]
+        internal static partial void ClearKeys();
 
         [LibraryImport("lib_win10-11_hook.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16, EntryPoint = "__cell_function")]
         internal static partial void __cell_function(
