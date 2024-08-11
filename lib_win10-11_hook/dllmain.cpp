@@ -4,8 +4,12 @@
 #include <windows.h>
 #include "Keyboard.h"
 
+#define null NULL
+
+
 std::vector<KeyHook> Keys{};
 HHOOK _keyboardhook_thread{ NULL };
+HHOOK _mosuehook_thread{NULL};
 KBDLLHOOKSTRUCT* _kbd_Struct;
 __key_down key_down_event;
 
@@ -75,6 +79,15 @@ LRESULT CALLBACK _keyboard_hook(const int code, const WPARAM wParam, const LPARA
 
 	return CallNextHookEx(_keyboardhook_thread, code, wParam, (LPARAM)(_kbd_Struct));
 }
+LRESULT CALLBACK _mouse_hook_proc(
+	int nCode,
+	WPARAM wParam,
+	LPARAM lParam
+)
+{
+
+		return CallNextHookEx(NULL, nCode, wParam, lParam);
+}
 void BindStdHandlesToConsole()
 {
 	FILE* fDummy;
@@ -105,7 +118,10 @@ void BindStdHandlesToConsole()
 
 
 void Init(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved) {
-	_keyboardhook_thread = SetWindowsHookEx(WH_KEYBOARD_LL, _keyboard_hook, NULL, 0);
+	_keyboardhook_thread = SetWindowsHookEx(WH_KEYBOARD_LL, _keyboard_hook, null, null);
+
+	_mosuehook_thread = SetWindowsHookEx(WH_MOUSE_LL, _mouse_hook_proc, null, null);
+
 }
 BOOL APIENTRY DllMain(HMODULE hModule,
 	DWORD  ul_reason_for_call,

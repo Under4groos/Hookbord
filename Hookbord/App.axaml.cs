@@ -12,6 +12,7 @@ public partial class App : Application
 {
     // string: id | delegate: action
     public static List<__key_down> KeyKookEvents = new List<__key_down>();
+    public static List<KeyboardKeyHook_ARTC> List_keyboardKeyHook_ARTCs = new List<KeyboardKeyHook_ARTC>();
     public override void Initialize()
     {
         //foreach (string item in new string[] {

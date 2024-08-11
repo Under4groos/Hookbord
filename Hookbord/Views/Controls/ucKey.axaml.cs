@@ -11,7 +11,7 @@ public partial class ucKey : UserControl
     public bool IsChanged_repl { get; set; } = false;
 
 
-    KeyHook __KeyHook, __KeyHook_repl;
+    public KeyboardKeyHook_ARTC keyboardKeyHook_ARTC;
     public ucKey()
     {
         InitializeComponent();
@@ -21,45 +21,56 @@ public partial class ucKey : UserControl
 
             if (IsChanged_repl)
             {
-                _key_repl.Content = $"{(char)kh.Key_char}";
+                set_bind(0, kh);
 
-                IsChanged_repl = false;
-                _button_repl.IsVisible = !IsChanged_repl;
-                __KeyHook_repl = kh;
             }
 
             if (IsChanged)
             {
-                _keyname.Content = $"{(char)kh.Key_char}";
+                set_bind(1, kh);
 
-                IsChanged = false;
-                _button.IsVisible = !IsChanged;
-                __KeyHook = kh;
             }
 
         };
 
 
-        //this.PointerEntered += (o, e) =>
-        //{
-        //    IsFocus = true;
-        //};
-        //this.PointerExited += (o, e) =>
-        //{
-        //    IsFocus = false;
-        //};
+
         this.Loaded += UcKey_Loaded;
 
         _button.Click += _button_Click;
         _button_repl.Click += _button_repl_Click;
     }
+    public void set_bind(int num, KeyHook kh)
+    {
+        switch (num)
+        {
+            case 0:
+                _key_repl.Content = $"{(char)kh.Key_char}";
 
+                IsChanged_repl = false;
+                _button_repl.IsVisible = !IsChanged_repl;
+                keyboardKeyHook_ARTC.__KeyHook_repl = kh;
+
+                break;
+
+            case 1:
+                _keyname.Content = $"{(char)kh.Key_char}";
+
+                IsChanged = false;
+                _button.IsVisible = !IsChanged;
+                keyboardKeyHook_ARTC.__KeyHook = kh;
+
+                break;
+            default:
+                break;
+        }
+    }
     public void RegistrationWinApiKey()
     {
-        if (!__KeyHook_repl.Equals(null) && !__KeyHook.Equals(null))
+        if (!keyboardKeyHook_ARTC.__KeyHook_repl.Equals(null) && !keyboardKeyHook_ARTC.__KeyHook.Equals(null))
         {
 
-            Imports.AddNewKey(__KeyHook_repl.key, __KeyHook.key);
+            Imports.AddNewKey(keyboardKeyHook_ARTC.__KeyHook_repl.key, keyboardKeyHook_ARTC.__KeyHook.key);
         }
     }
 

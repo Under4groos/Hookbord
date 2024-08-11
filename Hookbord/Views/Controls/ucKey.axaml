@@ -11,6 +11,8 @@
 			<Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MinWidth="40" Name="_key_repl">-</Label>
 			<Button Name="_button_repl">Bind</Button>
 
+			<Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MinWidth="40">-></Label>
+
 			<Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MinWidth="40" Name="_keyname">-</Label>
 			<Button Name="_button">Bin</Button>
 

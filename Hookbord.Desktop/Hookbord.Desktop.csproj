@@ -8,8 +8,13 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <PlatformTarget>x64</PlatformTarget>
-	  <PublishSingleFile>true</PublishSingleFile>
+	  
+	  <ApplicationIcon>Bs18MFKPnkKwyXoGUTekS0W2fH4A6b1CvZhJIdo20mcff448muYAKrmSEtTKs.ico</ApplicationIcon>
+	  <PublishAot>True</PublishAot>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Bs18MFKPnkKwyXoGUTekS0W2fH4A6b1CvZhJIdo20mcff448muYAKrmSEtTKs.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />

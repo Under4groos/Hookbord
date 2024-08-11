@@ -17,6 +17,13 @@ namespace Hookbord.Model
             return $"{((char)(Key_char))} => {key}:{key_replace} - Error: {Error}";
         }
     }
+
+    public struct KeyboardKeyHook_ARTC
+    {
+        public KeyHook __KeyHook, __KeyHook_repl;
+    }
+
+
     public static partial class Imports
     {
         [LibraryImport("lib_win10-11_hook.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16, EntryPoint = "AddNewKey")]
